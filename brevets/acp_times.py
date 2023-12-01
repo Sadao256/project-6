@@ -80,5 +80,3 @@ def close_time(control_dist_km, brevet_dist_km, brevet_start_time):
         close_time_calc = arrow.get(brevet_start_time).shift(minutes=time_max)
 
         return close_time_calc
-
-

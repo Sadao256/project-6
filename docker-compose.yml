@@ -15,7 +15,7 @@ services:
             DEBUG: "True"
     api:
         build: api/.
-        command: python flask_api.py
+        command: flask_api.py
         ports:
             - "5001:$API_PORT"
         depends_on:

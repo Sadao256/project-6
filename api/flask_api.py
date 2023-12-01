@@ -1,17 +1,13 @@
 """
 Brevets RESTful API
 """
+import logging
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import Api
 from mongoengine import connect
-import logging
-
 # You need to implement two resources: Brevet and Brevets.
 # Uncomment when done:
-# from resources.brevet import Brevet
-# from resources.brevets import Brevets
-
 from resources.brevet import BrevetResource
 from resources.brevets import BrevetsResource
 
@@ -26,9 +22,11 @@ app.logger.setLevel(logging.DEBUG)
 api = Api(app)
 
 # Bind resources to paths here:
+# api.add_resource(...)
 api.add_resource(BrevetResource, "/api/brevet/<id>")
 api.add_resource(BrevetsResource, "/api/brevets")
 
 if __name__ == "__main__":
     # Run flask app normally
-    app.run(port=port_num, host="0.0.0.0")
+    # Read DEBUG and PORT from environment variables.
+    app.run(port=port_num,host="0.0.0.0")
